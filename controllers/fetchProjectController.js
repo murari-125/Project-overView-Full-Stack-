@@ -16,12 +16,12 @@ const searchProject = async (req, res, next) => {
     const projects = await Projects.find({
       $or: [
         { Title: { $regex: query, $options: "i" } },
-        { Titleechnologies: { $regex: query, $options: "i" } },
+        { Technologies: { $regex: query, $options: "i" } },
         { Frontend: { $regex: query, $options: "i" } },
         { Backend: { $regex: query, $options: "i" } },
         { Availability: { $regex: query, $options: "i" } },
       ],
-    }).lean();
+    });
 
     return res.status(200).json(projects);
   } catch (error) {
